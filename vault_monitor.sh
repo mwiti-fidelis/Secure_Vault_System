@@ -4,7 +4,7 @@ Vault="$HOME/secure_vault"
 Report_file="$Vault/vault_report.txt"
 
 # Check if vault exists
-if [ ! -d "$VAULT_DIR" ]; then
+if [ ! -d "$Vault" ]; then
     echo "Error: secure_vault directory not found!" >&2
     exit 1
 fi
@@ -24,8 +24,7 @@ is_more_open() {
 
 # Start report
 > "$REPORT_FILE"
-
-for file in "$VAULT_DIR"/*; do
+for file in "$Vault"/*; do
     filename=$(basename "$file")
     size=$(stat -c%s "$file")
     mtime=$(stat -c%y "$file")
